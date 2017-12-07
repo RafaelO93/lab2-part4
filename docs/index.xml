@@ -17,7 +17,7 @@
       <pubDate>Wed, 06 Dec 2017 19:49:39 -0300</pubDate>
       
       <guid>https://rafaelo93.github.io/lab2-part4/post/primeiro-post/</guid>
-      <description>&amp;lt;!DOCTYPE html&amp;gt;  Parágrafos feitos em d3    d3.select(&amp;lsquo;body&amp;rsquo;) .append(&amp;lsquo;p&amp;rsquo;) .text(&amp;lsquo;Sou um parágrafo recém-criado!&amp;rsquo;);</description>
+      <description>Parágrafos feitos em d3    d3.select(&amp;lsquo;body&amp;rsquo;) .append(&amp;lsquo;p&amp;rsquo;) .text(&amp;lsquo;Sou um parágrafo recém-criado!&amp;rsquo;);</description>
     </item>
     
   </channel>
