@@ -17,7 +17,7 @@
       <pubDate>Wed, 06 Dec 2017 19:49:39 -0300</pubDate>
       
       <guid>https://rafaelo93.github.io/lab2-part4/post/primeiro-post/</guid>
-      <description>Parágrafos feitos em d3    d3.select(&amp;lsquo;body&amp;rsquo;) .append(&amp;lsquo;p&amp;rsquo;) .text(&amp;lsquo;Sou um parágrafo recém-criado!&amp;rsquo;);</description>
+      <description>.chart rect { fill: steelblue; }    var alturaSVG = 500, larguraSVG = 960; var margin = {top: 10, right: 20, bottom:30, left: 45}, larguraVis = larguraSVG - margin.left - margin.right, alturaVis = alturaSVG - margin.top - margin.bottom; function desenhaVis(data) { //criando o &#34;container&#34;/&#34;esqueleto&#34; do gráfico var grafico = d3.select(&#39;#chart&#39;) .append(&#34;svg&#34;) .attr(&#39;width&#39;, larguraVis + margin.left + margin.right) .attr(&#39;height&#39;, alturaVis + margin.top + margin.bottom) .append(&#39;g&#39;) .attr(&#39;transform&#39;, &#39;translate(&#39; + margin.</description>
     </item>
     
   </channel>

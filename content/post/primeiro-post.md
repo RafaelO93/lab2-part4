@@ -7,9 +7,10 @@ draft: false
 
 <div class="container">
     <style>
-     .chart rect {
+     #chart rect {
           fill: steelblue;
     }
+   
 
 </style>
     <div class="row mychart" id="chart">
@@ -17,8 +18,8 @@ draft: false
 </div>
 
 <script type="text/javascript">
-    var alturaSVG = 500,
-        larguraSVG = 960;
+    var alturaSVG = 400,
+        larguraSVG = 600;
 
     var	margin = {top: 10, right: 20, bottom:30, left: 45},
           larguraVis = larguraSVG - margin.left - margin.right,
@@ -33,10 +34,14 @@ draft: false
                 .attr('height', alturaVis + margin.top + margin.bottom)
             .append('g')
                 .attr('transform', 'translate(' +  margin.left + ',' + margin.top + ')');
-
         //escalas
-        var x = d3.scaleBand().domain(data.map((data, indice) => data.horario_inicial)).range([0, larguraVis]);
-        var y = d3.scaleLinear().domain([0, 1000]).range([alturaVis, 0]);
+        var x = d3.scaleBand().domain(data.filter((d) =>
+            (d.horario_inicial <= "13:00" && d.horario_inicial >= "11:30")||
+            (d.horario_inicial <= "19:00" && d.horario_inicial >="17:30"))
+            .map((data, indice) => data.horario_inicial))
+            .range([0, larguraVis]).padding(0.1);
+
+        var y = d3.scaleLinear().domain([0, 1300]).range([alturaVis, 0]);
 
         //dados mostrados
         grafico.selectAll('g')
@@ -45,8 +50,8 @@ draft: false
             .append('rect')
                 .attr('x', d => x(d.horario_inicial))   
                 .attr('width', x.bandwidth()) 
-                .attr('y', d => y(d.carros))
-                .attr('height', (d) => alturaVis - y(d.carros));
+                .attr('y', d => y(d.total_motorizados))
+                .attr('height', (d) => alturaVis - y(d.total_motorizados));
 
         //eixos
         grafico.append("g")
@@ -58,7 +63,7 @@ draft: false
             .call(d3.axisLeft(y));  
         grafico.append("text")
             .attr("transform", "translate(-30," + (alturaVis + margin.top)/2 + ") rotate(-90)")
-            .text("Frequencia");
+            .text("Quantidade de carros")
       }
 
     d3.csv('../dados/dados.csv', function(data) {
