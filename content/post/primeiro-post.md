@@ -8,7 +8,7 @@ draft: false
 <div class="container">
     <style>
      #chart rect {
-          fill: steelblue;
+        fill: #6C44FF;
     }
    
 
@@ -21,7 +21,7 @@ draft: false
     var alturaSVG = 400,
         larguraSVG = 600;
 
-    var	margin = {top: 10, right: 20, bottom:30, left: 45},
+    var	margin = {top: 10, right: 20, bottom:30, left: 60},
           larguraVis = larguraSVG - margin.left - margin.right,
           alturaVis = alturaSVG - margin.top - margin.bottom;
 
@@ -41,9 +41,8 @@ draft: false
             .map((data, indice) => data.horario_inicial))
             .range([0, larguraVis]).padding(0.1);
 
-        var y = d3.scaleLinear().domain([0, 1300]).range([alturaVis, 0]);
-
-        //dados mostrados
+        var y = d3.scaleLinear().domain([0, 1500]).range([alturaVis, 0]);
+        //dados mostr   ados
         grafico.selectAll('g')
             .data(data)
             .enter()
@@ -62,8 +61,9 @@ draft: false
             .attr('transform', 'translate(0,0)')
             .call(d3.axisLeft(y));  
         grafico.append("text")
-            .attr("transform", "translate(-30," + (alturaVis + margin.top)/2 + ") rotate(-90)")
-            .text("Quantidade de carros")
+            .attr("transform", "translate(-35," + (alturaVis + margin.top)/2 + ") rotate(-90)")
+            .text("Quantidade de carros");
+
       }
 
     d3.csv('../dados/dados.csv', function(data) {
