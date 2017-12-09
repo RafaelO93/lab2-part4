@@ -6,10 +6,23 @@
     <description>Recent content on Minimal</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 06 Dec 2017 19:49:39 -0300</lastBuildDate>
+    <lastBuildDate>Sat, 09 Dec 2017 12:50:20 -0300</lastBuildDate>
     
 	<atom:link href="https://rafaelo93.github.io/lab2-part4/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Segundo Post</title>
+      <link>https://rafaelo93.github.io/lab2-part4/post/segundo-post/</link>
+      <pubDate>Sat, 09 Dec 2017 12:50:20 -0300</pubDate>
+      
+      <guid>https://rafaelo93.github.io/lab2-part4/post/segundo-post/</guid>
+      <description>var svg = d3.select(&amp;ldquo;svg&amp;rdquo;), width = +svg.attr(&amp;ldquo;width&amp;rdquo;), height = +svg.attr(&amp;ldquo;height&amp;rdquo;), radius = Math.min(width, height) / 2, g = svg.append(&amp;ldquo;g&amp;rdquo;).attr(&amp;ldquo;transform&amp;rdquo;, &amp;ldquo;translate(&amp;rdquo; + width / 2 + &amp;ldquo;,&amp;rdquo; + height / 2 + &amp;ldquo;)&amp;rdquo;);
+var color = d3.scaleOrdinal([&amp;ldquo;#98abc5&amp;rdquo;, &amp;ldquo;#8a89a6&amp;rdquo;, &amp;ldquo;#7b6888&amp;rdquo;, &amp;ldquo;#6b486b&amp;rdquo;, &amp;ldquo;#a05d56&amp;rdquo;, &amp;ldquo;#d0743c&amp;rdquo;, &amp;ldquo;#ff8c00&amp;rdquo;]);
+var pie = d3.pie() .sort(null) .value(function(d) { return d.carros; });
+var path = d3.arc() .outerRadius(radius - 10) .innerRadius(0);
+var label = d3.arc() .outerRadius(radius - 40) .</description>
+    </item>
     
     <item>
       <title>Primeiro Post</title>

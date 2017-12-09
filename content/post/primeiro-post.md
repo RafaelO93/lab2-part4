@@ -40,9 +40,9 @@ draft: false
             (d.horario_inicial <= "19:00" && d.horario_inicial >="17:30"))
             .map((data, indice) => data.horario_inicial))
             .range([0, larguraVis]).padding(0.1);
-
+        
         var y = d3.scaleLinear().domain([0, 1500]).range([alturaVis, 0]);
-        //dados mostr   ados
+        //dados mostrados
         grafico.selectAll('g')
             .data(data)
             .enter()
