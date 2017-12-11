@@ -6,10 +6,19 @@
     <description>Recent content on Minimal</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 09 Dec 2017 12:50:20 -0300</lastBuildDate>
+    <lastBuildDate>Sun, 10 Dec 2017 21:14:19 -0300</lastBuildDate>
     
 	<atom:link href="https://rafaelo93.github.io/lab2-part4/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Comparação entre pedestres e carros em cada ponto estabelecido</title>
+      <link>https://rafaelo93.github.io/lab2-part4/post/terceiro-post/</link>
+      <pubDate>Sun, 10 Dec 2017 21:14:19 -0300</pubDate>
+      
+      <guid>https://rafaelo93.github.io/lab2-part4/post/terceiro-post/</guid>
+      <description>Comparação entre pedestres e carros em cada ponto estabelecido:    &#34;use strict&#34; var alturaSVG = 500, larguraSVG = 960; function desenhaVis(dados) { var cx_apoio = [1,2,3,4,5,6] var info_apoio = [] info_apoio.push({&#34;local&#34;: &#34;Frente do Bob&#39;s&#34;, &#34;valor_carros&#34;: d3.sum(dados.filter((d) = d.local === &#34;bobs&#34;), (d, i) = d.carros), &#34;valor_pedestres&#34;: d3.sum(dados.filter((d) = d.local === &#34;bobs&#34;), (d, i) = d.total_pedestres)}) info_apoio.push({&#34;local&#34;: &#34;Monumento do Sesquicentenário&#34;, &#34;valor_carros&#34;: d3.sum(dados.filter((d) = d.local === &#34;burrinhos&#34;), (d, i) = d.</description>
+    </item>
     
     <item>
       <title>Quantidade de veiculos em três principais pontos no entorno do Açude Velho</title>
