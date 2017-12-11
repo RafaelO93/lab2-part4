@@ -1,5 +1,5 @@
 ---
-title: "Primeiro Post"
+title: "Veiculos no horário de pico ao redor do Açude Velho "
 date: 2017-12-06T19:49:39-03:00
 draft: false
 ---
@@ -10,9 +10,10 @@ draft: false
      #chart rect {
         fill: #6C44FF;
     }
-   
-
-</style>
+    </style>
+    <div class="row">
+      <h2>Veiculos no horário de pico ao redor do Açude Velho</h2>
+    </div>
     <div class="row mychart" id="chart">
 </div>
 </div>

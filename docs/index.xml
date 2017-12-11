@@ -12,25 +12,21 @@
     
     
     <item>
-      <title>Segundo Post</title>
+      <title>Quantidade de veiculos em três principais pontos no entorno do Açude Velho</title>
       <link>https://rafaelo93.github.io/lab2-part4/post/segundo-post/</link>
       <pubDate>Sat, 09 Dec 2017 12:50:20 -0300</pubDate>
       
       <guid>https://rafaelo93.github.io/lab2-part4/post/segundo-post/</guid>
-      <description>var svg = d3.select(&amp;ldquo;svg&amp;rdquo;), width = +svg.attr(&amp;ldquo;width&amp;rdquo;), height = +svg.attr(&amp;ldquo;height&amp;rdquo;), radius = Math.min(width, height) / 2, g = svg.append(&amp;ldquo;g&amp;rdquo;).attr(&amp;ldquo;transform&amp;rdquo;, &amp;ldquo;translate(&amp;rdquo; + width / 2 + &amp;ldquo;,&amp;rdquo; + height / 2 + &amp;ldquo;)&amp;rdquo;);
-var color = d3.scaleOrdinal([&amp;ldquo;#98abc5&amp;rdquo;, &amp;ldquo;#8a89a6&amp;rdquo;, &amp;ldquo;#7b6888&amp;rdquo;, &amp;ldquo;#6b486b&amp;rdquo;, &amp;ldquo;#a05d56&amp;rdquo;, &amp;ldquo;#d0743c&amp;rdquo;, &amp;ldquo;#ff8c00&amp;rdquo;]);
-var pie = d3.pie() .sort(null) .value(function(d) { return d.carros; });
-var path = d3.arc() .outerRadius(radius - 10) .innerRadius(0);
-var label = d3.arc() .outerRadius(radius - 40) .</description>
+      <description>.arc text { font: 10px sans-serif; text-anchor: middle; } .arc path { stroke: #fff; }  Quantidade de veiculos em três principais pontos no entorno do Açude Velho:     var svg = d3.select(&#34;svg&#34;), width = +svg.attr(&#34;width&#34;), height = +svg.attr(&#34;height&#34;), radius = Math.min(width, height) / 2, g = svg.append(&#34;g&#34;).attr(&#34;transform&#34;, &#34;translate(&#34; + width / 2 + &#34;,&#34; + height / 2 + &#34;)&#34;); var color = [&#34;#3366CC&#34;, &#34;</description>
     </item>
     
     <item>
-      <title>Primeiro Post</title>
+      <title>Veiculos no horário de pico ao redor do Açude Velho </title>
       <link>https://rafaelo93.github.io/lab2-part4/post/primeiro-post/</link>
       <pubDate>Wed, 06 Dec 2017 19:49:39 -0300</pubDate>
       
       <guid>https://rafaelo93.github.io/lab2-part4/post/primeiro-post/</guid>
-      <description>#chart rect { fill: #6C44FF; }    var alturaSVG = 400, larguraSVG = 600; var margin = {top: 10, right: 20, bottom:30, left: 60}, larguraVis = larguraSVG - margin.left - margin.right, alturaVis = alturaSVG - margin.top - margin.bottom; function desenhaVis(data) { //criando o &#34;container&#34;/&#34;esqueleto&#34; do gráfico var grafico = d3.select(&#39;#chart&#39;) .append(&#34;svg&#34;) .attr(&#39;width&#39;, larguraVis + margin.left + margin.right) .attr(&#39;height&#39;, alturaVis + margin.top + margin.bottom) .append(&#39;g&#39;) .attr(&#39;transform&#39;, &#39;translate(&#39; + margin.</description>
+      <description>#chart rect { fill: #6C44FF; }  Veiculos no horário de pico ao redor do Açude Velho    var alturaSVG = 400, larguraSVG = 600; var margin = {top: 10, right: 20, bottom:30, left: 60}, larguraVis = larguraSVG - margin.left - margin.right, alturaVis = alturaSVG - margin.top - margin.bottom; function desenhaVis(data) { //criando o &#34;container&#34;/&#34;esqueleto&#34; do gráfico var grafico = d3.select(&#39;#chart&#39;) .append(&#34;svg&#34;) .attr(&#39;width&#39;, larguraVis + margin.left + margin.</description>
     </item>
     
   </channel>

@@ -4,7 +4,7 @@
          
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Primeiro Post</title>
+        <title>Veiculos no horário de pico ao redor do Açude Velho </title>
         <style>
 
     html body {
@@ -72,7 +72,7 @@
 
                 <div class="navbar-header">
 
-                    <a class="navbar-brand visible-xs" href="#">Primeiro Post</a>
+                    <a class="navbar-brand visible-xs" href="#">Veiculos no horário de pico ao redor do Açude Velho </a>
 
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
@@ -114,7 +114,7 @@
     
     
 
-    <h4><a href="/lab2-part4/post/primeiro-post/">Primeiro Post</a></h4>
+    <h4><a href="/lab2-part4/post/primeiro-post/">Veiculos no horário de pico ao redor do Açude Velho </a></h4>
     <h5>December 6, 2017</h5>
     
 
@@ -128,9 +128,10 @@
      #chart rect {
         fill: #6C44FF;
     }
-   
-
-</style>
+    </style>
+    <div class="row">
+      <h2>Veiculos no horário de pico ao redor do Açude Velho</h2>
+    </div>
     <div class="row mychart" id="chart">
 </div>
 </div>
@@ -158,9 +159,9 @@
             (d.horario_inicial <= "19:00" && d.horario_inicial >="17:30"))
             .map((data, indice) => data.horario_inicial))
             .range([0, larguraVis]).padding(0.1);
-
+        
         var y = d3.scaleLinear().domain([0, 1500]).range([alturaVis, 0]);
-        //dados mostr   ados
+        //dados mostrados
         grafico.selectAll('g')
             .data(data)
             .enter()
