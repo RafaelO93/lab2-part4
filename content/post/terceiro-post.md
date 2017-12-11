@@ -1,7 +1,7 @@
 ---
 title: "Comparação entre pedestres e carros em cada ponto estabelecido"
 date: 2017-12-10T21:14:19-03:00
-draft: true
+draft: false
 ---
 
 <script src="https://d3js.org/d3.v4.min.js"></script>
