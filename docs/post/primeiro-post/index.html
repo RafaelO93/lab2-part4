@@ -154,6 +154,10 @@
             .append('g')
                 .attr('transform', 'translate(' +  margin.left + ',' + margin.top + ')');
         //escalas
+        var teste = data.filter((d) =>
+            (d.horario_inicial <= "13:00" && d.horario_inicial >= "11:30")||
+            (d.horario_inicial <= "19:00" && d.horario_inicial >="17:30");
+        console.log(teste)
         var x = d3.scaleBand().domain(data.filter((d) =>
             (d.horario_inicial <= "13:00" && d.horario_inicial >= "11:30")||
             (d.horario_inicial <= "19:00" && d.horario_inicial >="17:30"))

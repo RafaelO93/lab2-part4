@@ -8,7 +8,10 @@ draft: false
 <div class="container">
     <style>
      #chart rect {
-        fill: #6C44FF;
+        fill: orange;
+    }
+    #chart rect:hover {
+        fill: orangered;
     }
     </style>
     <div class="row">
@@ -27,7 +30,8 @@ draft: false
           alturaVis = alturaSVG - margin.top - margin.bottom;
 
 
-    function desenhaVis(data) {
+    function desenhaVis(dados) {
+        var dataFiltrada = {}
         //criando o "container"/"esqueleto" do gráfico
         var grafico = d3.select('#chart')
             .append("svg") 
@@ -36,16 +40,33 @@ draft: false
             .append('g')
                 .attr('transform', 'translate(' +  margin.left + ',' + margin.top + ')');
         //escalas
-        var x = d3.scaleBand().domain(data.filter((d) =>
-            (d.horario_inicial <= "13:00" && d.horario_inicial >= "11:30")||
-            (d.horario_inicial <= "19:00" && d.horario_inicial >="17:30"))
-            .map((data, indice) => data.horario_inicial))
+       var teste = dados.reduce(function(result, current) {
+           if ((current.horario_inicial <= "13:00" && current.horario_inicial >= "11:30")||
+            (current.horario_inicial <= "19:00" && current.horario_inicial >="17:30")){
+            result[current.horario_inicial] = result[current.horario_inicial] || [];
+            result[current.horario_inicial].push(current);
+            }
+        return result;
+        }, {})
+        console.log(teste)
+        var abc = []
+       for (var i in teste) {
+           var sum = 0;
+           for(var j in teste[i]){
+               sum += parseInt(teste[i][j].total_motorizados);
+           }
+           abc.push({"total_motorizados": sum, "horario_inicial": teste[i][j].horario_inicial})
+        }
+        console.log(abc)
+        
+
+        var x = d3.scaleBand().domain(abc.map((data, indice) => data.horario_inicial))
             .range([0, larguraVis]).padding(0.1);
         
-        var y = d3.scaleLinear().domain([0, 1500]).range([alturaVis, 0]);
+        var y = d3.scaleLinear().domain([0, d3.max(abc, (d, i) => d.total_motorizados)]).range([alturaVis, 0]);
         //dados mostrados
         grafico.selectAll('g')
-            .data(data)
+            .data(abc)
             .enter()
             .append('rect')
                 .attr('x', d => x(d.horario_inicial))   
