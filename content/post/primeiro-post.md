@@ -13,6 +13,17 @@ draft: false
     #chart rect:hover {
         fill: orangered;
     }
+    div.tooltip {
+      position: absolute;
+      text-align: center;
+      width: 50px;
+      height: 14px;
+      padding: 2px;
+      font: 12px sans-serif;
+      background: lightsteelblue;
+      border: 0px;
+      border-radius: 8px;
+    }
     </style>
     <div class="row">
       <h2>Veiculos no horário de pico ao redor do Açude Velho</h2>
@@ -48,7 +59,6 @@ draft: false
             }
         return result;
         }, {})
-        console.log(teste)
         var abc = []
        for (var i in teste) {
            var sum = 0;
@@ -57,9 +67,10 @@ draft: false
            }
            abc.push({"total_motorizados": sum, "horario_inicial": teste[i][j].horario_inicial})
         }
-        console.log(abc)
         
-
+        var tooltip = d3.select("body").append("div")	
+        .attr("class", "tooltip")				
+        .style("opacity", 0);   
         var x = d3.scaleBand().domain(abc.map((data, indice) => data.horario_inicial))
             .range([0, larguraVis]).padding(0.1);
         
@@ -72,8 +83,22 @@ draft: false
                 .attr('x', d => x(d.horario_inicial))   
                 .attr('width', x.bandwidth()) 
                 .attr('y', d => y(d.total_motorizados))
-                .attr('height', (d) => alturaVis - y(d.total_motorizados));
-
+                .attr('height', (d) => alturaVis - y(d.total_motorizados))
+                .call(d3.zoom().on("zoom", function () {
+                    grafico.attr("transform", d3.event.transform)
+            }))
+            .on("mouseover", function(d) {
+                tooltip.transition().duration(200).style("opacity", .9);	
+        
+        		tooltip.html(d.total_motorizados)	
+                .style("left", (d3.event.pageX + 20) + "px")		
+                .style("top", (d3.event.pageY - 10) + "px");
+            })					
+        .on("mouseout", function(d) {		
+            tooltip.transition()		
+                .duration(500)		
+                .style("opacity", 0)
+      			});	 
         //eixos
         grafico.append("g")
             .attr("class", "x axis")
