@@ -35,7 +35,7 @@
       <pubDate>Wed, 06 Dec 2017 19:49:39 -0300</pubDate>
       
       <guid>https://rafaelo93.github.io/lab2-part4/post/primeiro-post/</guid>
-      <description>#chart rect { fill: #6C44FF; }  Veiculos no horário de pico ao redor do Açude Velho    var alturaSVG = 400, larguraSVG = 600; var margin = {top: 10, right: 20, bottom:30, left: 60}, larguraVis = larguraSVG - margin.left - margin.right, alturaVis = alturaSVG - margin.top - margin.bottom; function desenhaVis(data) { //criando o &#34;container&#34;/&#34;esqueleto&#34; do gráfico var grafico = d3.select(&#39;#chart&#39;) .append(&#34;svg&#34;) .attr(&#39;width&#39;, larguraVis + margin.left + margin.</description>
+      <description>#chart rect { fill: orange; } #chart rect:hover { fill: orangered; } div.tooltip { position: absolute; text-align: center; width: 50px; height: 14px; padding: 2px; font: 12px sans-serif; background: lightsteelblue; border: 0px; border-radius: 8px; }  Veiculos no horário de pico ao redor do Açude Velho    var alturaSVG = 400, larguraSVG = 600; var margin = {top: 10, right: 20, bottom:30, left: 60}, larguraVis = larguraSVG - margin.</description>
     </item>
     
   </channel>

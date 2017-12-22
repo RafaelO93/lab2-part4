@@ -126,7 +126,21 @@
 <div class="container">
     <style>
      #chart rect {
-        fill: #6C44FF;
+        fill: orange;
+    }
+    #chart rect:hover {
+        fill: orangered;
+    }
+    div.tooltip {
+      position: absolute;
+      text-align: center;
+      width: 50px;
+      height: 14px;
+      padding: 2px;
+      font: 12px sans-serif;
+      background: lightsteelblue;
+      border: 0px;
+      border-radius: 8px;
     }
     </style>
     <div class="row">
@@ -145,7 +159,8 @@
           alturaVis = alturaSVG - margin.top - margin.bottom;
 
 
-    function desenhaVis(data) {
+    function desenhaVis(dados) {
+        var dataFiltrada = {}
         //criando o "container"/"esqueleto" do gráfico
         var grafico = d3.select('#chart')
             .append("svg") 
@@ -154,27 +169,54 @@
             .append('g')
                 .attr('transform', 'translate(' +  margin.left + ',' + margin.top + ')');
         //escalas
-        var teste = data.filter((d) =>
-            (d.horario_inicial <= "13:00" && d.horario_inicial >= "11:30")||
-            (d.horario_inicial <= "19:00" && d.horario_inicial >="17:30");
-        console.log(teste)
-        var x = d3.scaleBand().domain(data.filter((d) =>
-            (d.horario_inicial <= "13:00" && d.horario_inicial >= "11:30")||
-            (d.horario_inicial <= "19:00" && d.horario_inicial >="17:30"))
-            .map((data, indice) => data.horario_inicial))
+       var teste = dados.reduce(function(result, current) {
+           if ((current.horario_inicial <= "13:00" && current.horario_inicial >= "11:30")||
+            (current.horario_inicial <= "19:00" && current.horario_inicial >="17:30")){
+            result[current.horario_inicial] = result[current.horario_inicial] || [];
+            result[current.horario_inicial].push(current);
+            }
+        return result;
+        }, {})
+        var abc = []
+       for (var i in teste) {
+           var sum = 0;
+           for(var j in teste[i]){
+               sum += parseInt(teste[i][j].total_motorizados);
+           }
+           abc.push({"total_motorizados": sum, "horario_inicial": teste[i][j].horario_inicial})
+        }
+        
+        var tooltip = d3.select("body").append("div")   
+        .attr("class", "tooltip")               
+        .style("opacity", 0);   
+        var x = d3.scaleBand().domain(abc.map((data, indice) => data.horario_inicial))
             .range([0, larguraVis]).padding(0.1);
         
-        var y = d3.scaleLinear().domain([0, 1500]).range([alturaVis, 0]);
+        var y = d3.scaleLinear().domain([0, d3.max(abc, (d, i) => d.total_motorizados)]).range([alturaVis, 0]);
         //dados mostrados
         grafico.selectAll('g')
-            .data(data)
+            .data(abc)
             .enter()
             .append('rect')
                 .attr('x', d => x(d.horario_inicial))   
                 .attr('width', x.bandwidth()) 
                 .attr('y', d => y(d.total_motorizados))
-                .attr('height', (d) => alturaVis - y(d.total_motorizados));
-
+                .attr('height', (d) => alturaVis - y(d.total_motorizados))
+                .call(d3.zoom().on("zoom", function () {
+                    grafico.attr("transform", d3.event.transform)
+            }))
+            .on("mouseover", function(d) {
+                tooltip.transition().duration(200).style("opacity", .9);    
+        
+                tooltip.html(d.total_motorizados)   
+                .style("left", (d3.event.pageX + 20) + "px")        
+                .style("top", (d3.event.pageY - 10) + "px");
+            })                  
+        .on("mouseout", function(d) {       
+            tooltip.transition()        
+                .duration(500)      
+                .style("opacity", 0)
+                });  
         //eixos
         grafico.append("g")
             .attr("class", "x axis")
