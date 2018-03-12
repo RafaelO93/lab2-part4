@@ -12,12 +12,13 @@
     
     
     <item>
-      <title>Lab4</title>
+      <title>Nirvana e suas ligações</title>
       <link>https://rafaelo93.github.io/lab2-part4/post/lab4/</link>
       <pubDate>Mon, 12 Mar 2018 18:15:44 -0300</pubDate>
       
       <guid>https://rafaelo93.github.io/lab2-part4/post/lab4/</guid>
-      <description>Baco Exu do Blues e o rap brasileiro  O que estamos vendo O grafo acima tem como ponto de referência o rapper Baco Exu do Blues e sua influência na música brasileira segundo dados do Spotify. O grafo apenas mostra apenas os artistas mais tocados e que tem alguma relação com Baco. Além disso o tamanho de cada vértice (nó) do grafo representa as diferentes popularidades desses artistas.</description>
+      <description>Nirvana e suas ligações O nó da cor preta representa a banda pela qual a homenagem da criação do gráfico, e ligada em volta dela todas bandas correlacionadas, com maiores correlações, por exemplo: Soundgarden, Pearl Jam, The Smashing Pumpkins, bandas que realmente na prática se assemelham muito com a banda focada no estudo.
+  .node { fill: #ccc; stroke: #fff; stroke-width: 2px; } .link { stroke: #999; stroke-opacity: 0.</description>
     </item>
     
     <item>

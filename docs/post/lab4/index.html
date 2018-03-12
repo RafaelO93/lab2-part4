@@ -72,7 +72,7 @@
 
                 <div class="navbar-header">
 
-                    <a class="navbar-brand visible-xs" href="#">Lab4</a>
+                    <a class="navbar-brand visible-xs" href="#">Nirvana e suas ligações</a>
 
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
@@ -114,7 +114,7 @@
     
     
 
-    <h4><a href="/lab2-part4/post/lab4/">Lab4</a></h4>
+    <h4><a href="/lab2-part4/post/lab4/">Nirvana e suas ligações</a></h4>
     <h5>March 12, 2018</h5>
     
 
@@ -125,17 +125,16 @@
 
 <script src="https://d3js.org/d3.v4.min.js"></script>
 
-<h1 id="baco-exu-do-blues-e-o-rap-brasileiro">Baco Exu do Blues e o rap brasileiro</h1>
+<h1 id="nirvana-e-suas-ligações">Nirvana e suas ligações</h1>
+
+<p>O nó da cor preta representa a banda pela qual a homenagem da criação do gráfico, e ligada em volta dela todas bandas correlacionadas, com
+maiores correlações, por exemplo: Soundgarden, Pearl Jam, The Smashing Pumpkins, bandas que realmente na prática se assemelham muito com a banda focada no estudo.</p>
 
 <p><link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/main.css" rel="stylesheet">
 <link href="css/fonts.css" rel="stylesheet"></p>
 
 <div id="chart"></div>
-
-<h3 id="o-que-estamos-vendo">O que estamos vendo</h3>
-
-<p>O grafo acima tem como ponto de referência o rapper Baco Exu do Blues e sua influência na música brasileira segundo dados do Spotify. O grafo apenas mostra apenas os artistas mais tocados e que tem alguma relação com Baco. Além disso o tamanho de cada vértice (nó) do grafo representa as diferentes popularidades desses artistas.</p>
 
 <style>
       .node {
@@ -154,14 +153,14 @@
 
 <script>
         var
-            width = 1000,
-            height = 1000;
+            width = 3000,
+            height = 3000;
 
         var svg = d3.select("#chart")
                 .append("svg")
                 .attr('version', '1.1')
                 .attr('viewBox', '0 0 '+width+' '+height)
-                .attr('width', '100%');
+                .attr('width', '200%');
 
         var color = d3.scaleOrdinal(d3.schemeCategory20);
 
@@ -170,11 +169,11 @@
             .force("charge", d3.forceManyBody())
             .force("center", d3.forceCenter(width / 2, height / 8));
 
-        d3.json("../dados/artistas-semelhantes.json", function(error, graph) {
+        d3.json("../dados/nirvana.json", function(error, graph) {
           if (error) throw error;
 
 
-            var superior_nodes = graph.nodes.filter(d => +d.size >= 60);
+            var superior_nodes = graph.nodes.filter(d => +d.size >= 70);
 
             var superior_nodes_ids = [];
 
@@ -201,7 +200,7 @@
                 .data(superior_nodes)
             .enter().append("circle")
               .attr("r", function(d) { return d.size/6; })
-              .attr("fill", function(d) { if(d.label == "Baco Exu do Blues") return "Black";
+              .attr("fill", function(d) { if(d.label == "Nirvana") return "Black";
                                                                             return color(d.group);
                                                                         })
               .call(d3.drag()
