@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+         
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Trânsito</title>
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: red;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://rafaelo93.github.io/lab2-part4//css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/haskell.min.js"></script>  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/swift.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.30.2" />
+        
+        
+        
+    </head>
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Lab4</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/lab2-part4/">Home</a></li>
+                            
+                                <li><a href="/lab2-part4/post/">Posts</a></li>
+                            
+                        </ul>
+                    
+
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+<main>
+
+    <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/lab2-part4/post/lab4/">Lab4</a></h4>
+    <h5>March 12, 2018</h5>
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+
+<h1 id="baco-exu-do-blues-e-o-rap-brasileiro">Baco Exu do Blues e o rap brasileiro</h1>
+
+<p><link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
+<link href="css/fonts.css" rel="stylesheet"></p>
+
+<div id="chart"></div>
+
+<h3 id="o-que-estamos-vendo">O que estamos vendo</h3>
+
+<p>O grafo acima tem como ponto de referência o rapper Baco Exu do Blues e sua influência na música brasileira segundo dados do Spotify. O grafo apenas mostra apenas os artistas mais tocados e que tem alguma relação com Baco. Além disso o tamanho de cada vértice (nó) do grafo representa as diferentes popularidades desses artistas.</p>
+
+<style>
+      .node {
+          fill: #ccc;
+          stroke: #fff;
+          stroke-width: 2px;
+      }
+
+      .link {
+          stroke: #999;
+          stroke-opacity: 0.3;
+      }
+</style>
+
+<!-- scripts -->
+
+<script>
+        var
+            width = 1000,
+            height = 1000;
+
+        var svg = d3.select("#chart")
+                .append("svg")
+                .attr('version', '1.1')
+                .attr('viewBox', '0 0 '+width+' '+height)
+                .attr('width', '100%');
+
+        var color = d3.scaleOrdinal(d3.schemeCategory20);
+
+        var simulation = d3.forceSimulation()
+            .force("link", d3.forceLink().id(function(d) { return d.id; }))
+            .force("charge", d3.forceManyBody())
+            .force("center", d3.forceCenter(width / 2, height / 8));
+
+        d3.json("../dados/artistas-semelhantes.json", function(error, graph) {
+          if (error) throw error;
+
+
+            var superior_nodes = graph.nodes.filter(d => +d.size >= 60);
+
+            var superior_nodes_ids = [];
+
+            superior_nodes.forEach(function(p) {
+                return superior_nodes_ids.push(p.id);
+            });
+
+            var superior_edges = graph.edges.filter(d => superior_nodes_ids.includes(d.target) &&
+                                                                                                    superior_nodes_ids.includes(d.source));
+
+            console.log(superior_edges);
+            console.dir(graph.edges);
+            console.dir(graph.nodes);
+
+          var link = svg.append("g")
+              .attr("class", "link")
+            .selectAll("line")
+                .data(superior_edges)
+            .enter().append("line");
+
+          var node = svg.append("g")
+              .attr("class", "nodes")
+            .selectAll("circle")
+                .data(superior_nodes)
+            .enter().append("circle")
+              .attr("r", function(d) { return d.size/6; })
+              .attr("fill", function(d) { if(d.label == "Baco Exu do Blues") return "Black";
+                                                                            return color(d.group);
+                                                                        })
+              .call(d3.drag()
+                  .on("start", dragstarted)
+                  .on("drag", dragged)
+                  .on("end", dragended));
+
+          node.append("title")
+              .text(function(d) { return d.label; });
+
+          simulation
+              .nodes(graph.nodes)
+              .on("tick", ticked);
+
+          simulation.force("link")
+              .links(graph.edges);
+
+          function ticked() {
+            link
+                .attr("x1", function(d) { return d.source.x; })
+                .attr("y1", function(d) { return d.source.y; })
+                .attr("x2", function(d) { return d.target.x; })
+                .attr("y2", function(d) { return d.target.y; });
+
+            node
+                .attr("cx", function(d) { return d.x; })
+                .attr("cy", function(d) { return d.y; });
+          }
+        });
+
+        function dragstarted(d) {
+          if (!d3.event.active) simulation.alphaTarget(0.2).restart();
+          d.fx = d.x;
+          d.fy = d.y;
+        }
+
+        function dragged(d) {
+          d.fx = d3.event.x;
+          d.fy = d3.event.y;
+        }
+
+        function dragended(d) {
+          if (!d3.event.active) simulation.alphaTarget(0);
+          d.fx = null;
+          d.fy = null;
+        }
+
+</script>
+</div>
+
+    
+    
+
+    
+
+    
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+

@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Minimal</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 10 Dec 2017 21:14:19 -0300</lastBuildDate>
+    <lastBuildDate>Mon, 12 Mar 2018 18:15:44 -0300</lastBuildDate>
     
 	<atom:link href="https://rafaelo93.github.io/lab2-part4/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Lab4</title>
+      <link>https://rafaelo93.github.io/lab2-part4/post/lab4/</link>
+      <pubDate>Mon, 12 Mar 2018 18:15:44 -0300</pubDate>
+      
+      <guid>https://rafaelo93.github.io/lab2-part4/post/lab4/</guid>
+      <description>Baco Exu do Blues e o rap brasileiro  O que estamos vendo O grafo acima tem como ponto de referência o rapper Baco Exu do Blues e sua influência na música brasileira segundo dados do Spotify. O grafo apenas mostra apenas os artistas mais tocados e que tem alguma relação com Baco. Além disso o tamanho de cada vértice (nó) do grafo representa as diferentes popularidades desses artistas.</description>
+    </item>
     
     <item>
       <title>Comparação entre pedestres e carros em cada ponto estabelecido</title>
